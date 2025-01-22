@@ -16,8 +16,9 @@ defmodule WttjWeb.Router do
 
   # Other scopes may use custom stacks.
   scope "/api", WttjWeb do
+    
     pipe_through :api
-
+    put "/candidates/:id/status", CandidateController, :update_status
     resources "/jobs", JobController, except: [:new, :edit] do
       resources "/candidates", CandidateController, except: [:new, :edit]
     end

@@ -4,7 +4,7 @@ defmodule Wttj.Repo.Migrations.CreateCandidates do
   def change do
     create table(:candidates) do
       add :email, :string, null: false
-      add :status, :string, default: "new", null: false
+      add :status, :string, default: "new"
       add :position, :integer, null: false
       add :job_id, references(:jobs, on_delete: :delete_all), null: false
 

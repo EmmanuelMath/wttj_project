@@ -29,3 +29,12 @@ export const useCandidates = (jobId?: string) => {
 
   return { isLoading, error, candidates: data }
 }
+
+import { useMutation } from 'react-query'
+import { updateCandidateStatus } from '../api'
+
+export const useUpdateCandidateStatus = () => {
+  return useMutation(({ candidateId, status }: { candidateId: number; status: string }) =>
+    updateCandidateStatus(candidateId, status)
+  )
+}

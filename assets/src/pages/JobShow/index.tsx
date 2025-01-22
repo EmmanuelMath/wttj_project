@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
-import { useJob, useCandidates } from '../../hooks'
+import { useJob, useCandidates } from '../hooks'
 import { Text } from '@welcome-ui/text'
 import { Flex } from '@welcome-ui/flex'
 import { Box } from '@welcome-ui/box'
 import { useMemo } from 'react'
-import { Candidate } from '../../api'
-import CandidateCard from '../../components/Candidate'
+import { Candidate } from '../api'
+import CandidateCard from '../components/Candidate'
 import { Badge } from '@welcome-ui/badge'
 
 type Statuses = 'new' | 'interview' | 'hired' | 'rejected'
@@ -44,6 +44,7 @@ function JobShow() {
         <Flex gap={10}>
           {COLUMNS.map(column => (
             <Box
+              key={column}
               w={300}
               border={1}
               backgroundColor="white"
@@ -65,7 +66,7 @@ function JobShow() {
               </Flex>
               <Flex direction="column" p={10} pb={0}>
                 {sortedCandidates[column]?.map((candidate: Candidate) => (
-                  <CandidateCard candidate={candidate} />
+                  <CandidateCard key={candidate.id} candidate={candidate} />
                 ))}
               </Flex>
             </Box>

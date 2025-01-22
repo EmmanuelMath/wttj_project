@@ -87,3 +87,11 @@ defmodule Wttj.Candidates do
     Candidate.changeset(candidate, attrs)
   end
 end
+
+def update_candidate_status(candidate_id, new_status) do
+  candidate = Repo.get!(Candidate, candidate_id)
+
+  candidate
+  |> Ecto.Changeset.change(status: new_status)
+  |> Repo.update()
+end
